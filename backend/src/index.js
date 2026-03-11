@@ -41,8 +41,9 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Aquatrans API está funcionando!' });
 });
 
-app.listen(PORT, async () => {
-  console.log(`🏳️‍⚧️ Servidor Aquatrans rodando na porta ${PORT}`);
+// Inicialização de dados (executa apenas no build/start)
+async function initializeData() {
+  console.log(`🏳️‍⚧️ Inicializando Aquatrans API`);
   console.log(`📋 Usuários de teste criados com senha: aquatrans2026`);
   
   // Inicializa dados de exemplo de performance para o aluno demo
@@ -54,4 +55,14 @@ app.listen(PORT, async () => {
   
   // Inicializa serviço de email
   await initializeTransporter();
-});
+}
+
+// Para desenvolvimento local
+if (require.main === module) {
+  app.listen(PORT, async () => {
+    await initializeData();
+  });
+}
+
+// Export para Vercel
+module.exports = app;
