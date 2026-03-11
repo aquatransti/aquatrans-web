@@ -69,3 +69,8 @@ if (require.main === module) {
 
 // Export para Vercel
 module.exports = app;
+
+// Inicialização para Vercel (serverless)
+if (process.env.NODE_ENV === 'production' && !require.main) {
+  initializeData();
+}
