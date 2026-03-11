@@ -2,7 +2,7 @@
   "name": "aquatrans",
   "private": true,
   "scripts": {
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "start": "cd frontend && npm start"
   }
 }
