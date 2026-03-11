@@ -1,0 +1,35 @@
+{
+  "name": "aquatrans-backend",
+  "version": "1.0.0",
+  "description": "API backend para o site Aquatrans - Associação Trans",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "aquatrans",
+    "trans",
+    "lgbtqia+",
+    "ong",
+    "social"
+  ],
+  "author": "Equipe Aquatrans",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.10.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^7.2.2"
+  }
+}

@@ -1,0 +1,57 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const routes = require('./routes');
+const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin');
+const alunoRoutes = require('./routes/aluno');
+const validationRoutes = require('./routes/validation');
+const performanceRoutes = require('./routes/performance');
+const { initializeTransporter } = require('./services/emailService');
+const { addSampleData } = require('./data/performance');
+const { users } = require('./data/users');
+
+const app = express();
+const PORT = process.env.PORT || 5001;
+
+// Middlewares
+app.use(cors());
+app.use(express.json());
+
+// Rotas públicas
+app.use('/api', routes);
+
+// Rotas de autenticação
+app.use('/api/auth', authRoutes);
+
+// Rotas administrativas (protegidas)
+app.use('/api/admin', adminRoutes);
+
+// Rotas do aluno (protegidas)
+app.use('/api/aluno', alunoRoutes);
+
+// Rotas de validação de usuários
+app.use('/api/validation', validationRoutes);
+
+// Rotas de performance de natação
+app.use('/api/performance', performanceRoutes);
+
+// Rota de saúde
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Aquatrans API está funcionando!' });
+});
+
+app.listen(PORT, async () => {
+  console.log(`🏳️‍⚧️ Servidor Aquatrans rodando na porta ${PORT}`);
+  console.log(`📋 Usuários de teste criados com senha: aquatrans2026`);
+  
+  // Inicializa dados de exemplo de performance para o aluno demo
+  const alunoDemo = users.find(u => u.email === 'aluno@aquatrans.org.br');
+  if (alunoDemo) {
+    addSampleData(alunoDemo.id);
+    console.log(`🏊 Dados de performance de exemplo criados para aluno demo`);
+  }
+  
+  // Inicializa serviço de email
+  await initializeTransporter();
+});

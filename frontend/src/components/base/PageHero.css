@@ -1,0 +1,41 @@
+/* PageHero - Componente Base */
+.page-hero {
+  background: var(--bg-secondary);
+  padding: var(--spacing-xxl) 0;
+  text-align: center;
+}
+
+.page-hero .hero-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(91, 206, 250, 0.15);
+  color: var(--trans-blue-dark);
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.page-hero .page-title {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+}
+
+.page-hero .page-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .page-hero .page-title {
+    font-size: 2.25rem;
+  }
+  
+  .page-hero .page-subtitle {
+    font-size: 1.1rem;
+  }
+}
