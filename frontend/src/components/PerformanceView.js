@@ -12,10 +12,6 @@ const PerformanceView = () => {
   const [viewPeriod, setViewPeriod] = useState('all');
   const [selectedRecord, setSelectedRecord] = useState(null);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
   const fetchData = useCallback(async () => {
     const token = getToken();
     setLoading(true);
@@ -41,7 +37,11 @@ const PerformanceView = () => {
     } finally {
       setLoading(false);
     }
-  }, [viewPeriod]);
+  }, [viewPeriod, getToken]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const formatDate = (dateStr) => {
     return new Date(dateStr).toLocaleDateString('pt-BR', {
