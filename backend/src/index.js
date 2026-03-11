@@ -15,7 +15,10 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: ['https://dev-aquatrans0-17g38rfng-caesarveras-projects.vercel.app', 'https://aquatrans-frontend.vercel.app'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Rotas públicas
