@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import './PerformanceView.css';
 
@@ -12,12 +12,11 @@ const PerformanceView = () => {
   const [viewPeriod, setViewPeriod] = useState('all');
   const [selectedRecord, setSelectedRecord] = useState(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchData();
-  }, [viewPeriod]);
+  }, [fetchData]);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const token = getToken();
     setLoading(true);
     
@@ -42,7 +41,7 @@ const PerformanceView = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [viewPeriod]);
 
   const formatDate = (dateStr) => {
     return new Date(dateStr).toLocaleDateString('pt-BR', {
