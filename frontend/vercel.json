@@ -2,5 +2,8 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "build",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://backend-pi-three-5zd0y81ban.vercel.app/api/:path*" }
+  ]
 }
