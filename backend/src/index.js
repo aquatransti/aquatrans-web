@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 5001;
 app.use(cors({
   origin: [
     'http://localhost:3000',
+    'https://dev-aquatrans.vercel.app',
     'https://dev-aquatrans0-17g38rfng-caesarveras-projects.vercel.app',
     'https://devaquatrans.vercel.app',
     'https://aquatrans-frontend.vercel.app'
