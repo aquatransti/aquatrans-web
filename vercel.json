@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/build",
+  "installCommand": "echo 'skip'",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://backend-pi-three-5zd0y81ban.vercel.app/api/:path*" }
+  ]
+}
