@@ -219,8 +219,7 @@ router.post('/complete-registration', async (req, res) => {
 router.post('/webhook/google-forms', (req, res) => {
   const { apiKey } = req.query;
   
-  // Verifica chave de API (em produção, usar uma chave segura)
-  if (apiKey !== (process.env.GOOGLE_FORMS_API_KEY || 'aquatrans-forms-key-2026')) {
+  if (!process.env.GOOGLE_FORMS_API_KEY || apiKey !== process.env.GOOGLE_FORMS_API_KEY) {
     return res.status(401).json({ error: 'API key inválida' });
   }
   

@@ -2,7 +2,11 @@ const jwt = require('jsonwebtoken');
 const { findUserById } = require('../data/users');
 const { PERMISSIONS } = require('../config/roles');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'aquatrans-secret-key-2026';
+if (!process.env.JWT_SECRET) {
+  throw new Error('Variável de ambiente JWT_SECRET não configurada. Defina-a no arquivo .env');
+}
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Middleware de autenticação
 const authenticate = (req, res, next) => {

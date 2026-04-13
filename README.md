@@ -91,8 +91,10 @@ O sistema permite que **Gestores** e **TI** validem novos usuários:
 
 **Webhook para Google Forms:**
 ```
-POST /api/validation/webhook/google-forms?apiKey=aquatrans-forms-key-2026
+POST /api/validation/webhook/google-forms?apiKey=<GOOGLE_FORMS_API_KEY>
 ```
+
+> A chave de API é definida via variável de ambiente `GOOGLE_FORMS_API_KEY` no backend.
 
 **Dados esperados:**
 ```json
@@ -133,17 +135,11 @@ O sistema possui três níveis de acesso:
   - Acessar atendimento psicossocial
   - Histórico de pagamentos e aulas
 
-### Contas de Teste
+### Contas de Desenvolvimento
 
-| Perfil | E-mail | Senha |
-|--------|--------|-------|
-| Gestor | maya@aquatrans.org.br | aquatrans2026 |
-| TI | caesar@aquatrans.org.br | aquatrans2026 |
-| Professor | professor@aquatrans.org.br | aquatrans2026 |
-| Jurídico | juridico@aquatrans.org.br | aquatrans2026 |
-| Contábil | contabil@aquatrans.org.br | aquatrans2026 |
-| Psicossocial | psicossocial@aquatrans.org.br | aquatrans2026 |
-| Aluno | aluno@aquatrans.org.br | aquatrans2026 |
+As credenciais de desenvolvimento são configuradas via variável de ambiente `DEFAULT_USER_PASSWORD` no arquivo `backend/.env`.
+
+Consulte o `backend/.env.example` para ver as variáveis de ambiente necessárias.
 
 ## 🔌 API Endpoints
 
@@ -239,23 +235,5 @@ O Aquatrans é uma associação dedicada a promover inclusão, bem-estar e comun
 Este projeto é de propriedade da Aquatrans. Todos os direitos reservados.
 
 ---
-{/* Info para desenvolvimento */}
-<div className="login-demo-info">
-  <h4>Contas de teste:</h4>
-  <div className="demo-accounts">
-    <div className="demo-account">
-      <strong>Gestor:</strong> maya@aquatrans.org.br
-    </div>
-    <div className="demo-account">
-      <strong>TI:</strong> caesar@aquatrans.org.br
-    </div>
-    <div className="demo-account">
-      <strong>Aluno:</strong> aluno@aquatrans.org.br
-    </div>
-    <div className="demo-account">
-      <strong>Senha:</strong> aquatrans2026
-    </div>
-  </div>
-</div>
 Feito com 💙🩷🤍🩷💙 para a comunidade trans
 # dev.aquatrans

@@ -3,8 +3,11 @@ const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 const { ROLES } = require('../config/roles');
 
-// Senha padrão para usuários iniciais: "aquatrans2026"
-const defaultPasswordHash = bcrypt.hashSync('aquatrans2026', 10);
+if (!process.env.DEFAULT_USER_PASSWORD) {
+  throw new Error('Variável de ambiente DEFAULT_USER_PASSWORD não configurada. Defina-a no arquivo .env');
+}
+
+const defaultPasswordHash = bcrypt.hashSync(process.env.DEFAULT_USER_PASSWORD, 10);
 
 const users = [
   // Gestores

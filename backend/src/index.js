@@ -53,7 +53,6 @@ app.get('/health', (req, res) => {
 // Inicialização de dados (executa apenas no build/start)
 async function initializeData() {
   console.log(`🏳️‍⚧️ Inicializando Aquatrans API`);
-  console.log(`📋 Usuários de teste criados com senha: aquatrans2026`);
   
   // Inicializa dados de exemplo de performance para o aluno demo
   const alunoDemo = users.find(u => u.email === 'aluno@aquatrans.org.br');

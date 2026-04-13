@@ -7,8 +7,7 @@ const Apadrinhamento = () => {
   const [customAmount, setCustomAmount] = useState('');
   const [copied, setCopied] = useState(false);
 
-  // Chave PIX do Aquatrans (substitua pela chave real)
-  const PIX_KEY = 'aquatrans@email.com.br';
+  const PIX_KEY = process.env.REACT_APP_PIX_KEY || '';
   const PIX_TYPE = 'E-mail';
 
   const donationOptions = [

@@ -2,6 +2,8 @@ const request = require('supertest');
 const express = require('express');
 const cors = require('cors');
 
+const TEST_PASSWORD = process.env.DEFAULT_USER_PASSWORD;
+
 // Create test app
 const createTestApp = () => {
   const app = express();
@@ -69,7 +71,7 @@ describe('API Integration Tests', () => {
         .post('/api/auth/login')
         .send({
           email: 'maya@aquatrans.org.br',
-          password: 'aquatrans2026'
+          password: TEST_PASSWORD
         });
 
       expect(res.statusCode).toBe(200);
@@ -85,7 +87,7 @@ describe('API Integration Tests', () => {
         .post('/api/auth/login')
         .send({
           email: 'professor@aquatrans.org.br',
-          password: 'aquatrans2026'
+          password: TEST_PASSWORD
         });
 
       expect(res.statusCode).toBe(200);
@@ -99,7 +101,7 @@ describe('API Integration Tests', () => {
         .post('/api/auth/login')
         .send({
           email: 'aluno@aquatrans.org.br',
-          password: 'aquatrans2026'
+          password: TEST_PASSWORD
         });
 
       expect(res.statusCode).toBe(200);
