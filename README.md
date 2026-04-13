@@ -229,7 +229,7 @@ O Aquatrans é uma associação dedicada a promover inclusão, bem-estar e comun
 
 - Maya - Coordenação Geral
 - Maria Elis Costa Alencar - Equipe
-- Marcelo Silva - Equipe Técnica
+- Marcelo Silva - Diretor e Equipe Técnica
 - Mario Alves - Captação de Recursos
 - Iracema Vieira - Equipe
 - Caesar Lima - TI
