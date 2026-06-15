@@ -2,5 +2,17 @@
   "version": 2,
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/build",
-  "installCommand": "echo 'skip'"
+  "installCommand": "echo 'skip'",
+  "experimentalServices": {
+    "frontend": {
+      "root": "frontend",
+      "routePrefix": "/",
+      "framework": "create-react-app"
+    },
+    "backend": {
+      "root": "backend",
+      "entrypoint": "src/index.js",
+      "routePrefix": "/_/backend"
+    }
+  }
 }
