@@ -1,3 +1,26 @@
-.vercel
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment
 .env
 .env*.local
+
+# Vercel
+.vercel
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/
+
+# Imagens soltas na raiz (fontes; já copiadas para os assets do projeto)
+/image-0.png
+/image-1.png
