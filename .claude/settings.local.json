@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat backend/vercel.json)",
+      "Bash(cat frontend/vercel.json)",
+      "Read(//mnt/c/Users/AmanCardoso/aquatrans/**)",
+      "Bash(mkdir -p /tmp/aqua-new)",
+      "Bash(python3 -)",
+      "Bash(sed 's|^\\\\./||')",
+      "Read(//tmp/aqua-new/**)",
+      "Bash(rm -rf frontend-v2)",
+      "Bash(mkdir -p frontend-v2/src/assets)",
+      "Bash(cp -r /tmp/aqua-new/src/app frontend-v2/src/app)",
+      "Bash(curl -s http://localhost:4173)",
+      "Bash(curl -s -o /dev/null -w \"home: %{http_code}\\\\n\" http://localhost:4173)",
+      "Bash(curl -s -o /dev/null -w \"sobre: %{http_code}\\\\n\" http://localhost:4173/sobre)",
+      "Bash(npm run *)",
+      "Bash(pkill -f \"vite preview\")"
+    ]
+  }
+}
