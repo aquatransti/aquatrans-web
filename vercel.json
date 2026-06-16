@@ -1,13 +1,9 @@
 {
-  "version": 2,
+  "framework": null,
+  "installCommand": "cd backend && npm install",
   "buildCommand": "cd frontend-v2 && npm install && npm run build",
   "outputDirectory": "frontend-v2/dist",
-  "installCommand": "echo 'skip'",
-  "experimentalServices": {
-    "backend": {
-      "root": "backend",
-      "entrypoint": "src/index.js",
-      "routePrefix": "/_/backend"
-    }
-  }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
