@@ -23,17 +23,18 @@ aquatrans/
 │   ├── package.json
 │   └── .env.example
 │
-├── frontend/              # Aplicação React
-│   ├── public/
+├── frontend-v2/           # Aplicação React (Vite + TypeScript)
+│   ├── index.html
 │   ├── src/
-│   │   ├── components/   # Componentes reutilizáveis
-│   │   │   └── base/     # Componentes base (POM)
-│   │   ├── context/      # Contextos (Auth, Theme)
-│   │   ├── pages/        # Páginas do site
-│   │   │   └── dashboard/# Dashboards por perfil
-│   │   ├── styles/       # Estilos globais
-│   │   ├── App.js
-│   │   └── index.js
+│   │   ├── app/
+│   │   │   ├── components/  # Componentes reutilizáveis
+│   │   │   ├── pages/       # Páginas do site (inclui dashboards por perfil)
+│   │   │   ├── App.tsx
+│   │   │   └── routes.tsx
+│   │   ├── assets/          # Imagens e logos
+│   │   ├── index.css
+│   │   └── main.tsx
+│   ├── vite.config.ts
 │   └── package.json
 │
 └── README.md
@@ -59,12 +60,12 @@ O servidor estará disponível em `http://localhost:5001`
 ### Frontend
 
 ```bash
-cd frontend
+cd frontend-v2
 npm install
-npm start
+npm run dev
 ```
 
-A aplicação estará disponível em `http://localhost:3000`
+A aplicação estará disponível em `http://localhost:5173`
 
 ## 📄 Páginas Públicas
 
@@ -181,9 +182,10 @@ Consulte o `backend/.env.example` para ver as variáveis de ambiente necessária
 
 ### Frontend
 - React 18
-- React Router DOM
-- Context API (Auth, Theme)
-- CSS3 com variáveis customizadas
+- Vite 6 + TypeScript
+- React Router 7
+- Tailwind CSS 4
+- Motion (animações) e lucide-react (ícones)
 - Design responsivo (Flexbox/Grid)
 
 ### Backend
