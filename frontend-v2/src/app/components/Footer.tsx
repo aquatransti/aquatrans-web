@@ -80,7 +80,7 @@ export function Footer() {
             <p className="flex items-center gap-1.5">
               Feito com
               <span className="text-[#F5A9B8]">🩷</span>
-              por Caesar e Wenny para a comunidade trans
+              por Caesar, Wenny e Guillermo para a comunidade trans
             </p>
           </div>
         </div>
