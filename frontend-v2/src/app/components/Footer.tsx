@@ -30,7 +30,7 @@ export function Footer() {
               </a>
               
               <a
-                href="mailto:contato@aquatrans.org.br"
+                href="mailto:aqua.trans24@gmail.com"
                 className="p-1.5 rounded-lg bg-slate-800 hover:bg-cyan-600 transition-colors"
                 aria-label="Email"
               >

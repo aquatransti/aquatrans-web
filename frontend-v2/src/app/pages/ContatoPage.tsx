@@ -155,7 +155,7 @@ export function ContatoPage() {
                   </h3>
                   <div className="space-y-4">
                     <a
-                      href="mailto:contato@aquatrans.org.br"
+                      href="mailto:aqua.trans24@gmail.com"
                       className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                     >
                       <div className="w-10 h-10 rounded-full bg-[#5BCEFA]/10 flex items-center justify-center">
@@ -163,7 +163,7 @@ export function ContatoPage() {
                       </div>
                       <div>
                         <div className="text-sm font-medium text-gray-900 dark:text-white">E-mail</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">contato@aquatrans.org.br</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">aqua.trans24@gmail.com</div>
                       </div>
                     </a>
 
@@ -178,7 +178,7 @@ export function ContatoPage() {
                       </div>
                       <div>
                         <div className="text-sm font-medium text-gray-900 dark:text-white">Instagram</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">@aquatrans</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">@aquatrans.oficial</div>
                       </div>
                     </a>
 
