@@ -5,6 +5,48 @@ import { Heart, CheckCircle2, Copy, Smartphone, BarChart3 } from 'lucide-react';
 import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 
+const PIX_KEY = "aqua.trans24@gmail.com";
+
+// Monta um campo no formato EMV (BR Code): id + tamanho (2 dígitos) + valor
+function emvField(id: string, value: string): string {
+  return id + value.length.toString().padStart(2, '0') + value;
+}
+
+// CRC16-CCITT (polinômio 0x1021, valor inicial 0xFFFF) exigido pelo BR Code do PIX
+function crc16(payload: string): string {
+  let crc = 0xffff;
+  for (let i = 0; i < payload.length; i++) {
+    crc ^= payload.charCodeAt(i) << 8;
+    for (let j = 0; j < 8; j++) {
+      crc = crc & 0x8000 ? ((crc << 1) ^ 0x1021) & 0xffff : (crc << 1) & 0xffff;
+    }
+  }
+  return crc.toString(16).toUpperCase().padStart(4, '0');
+}
+
+// Gera o "Pix Copia e Cola" (BR Code estático, valor em aberto)
+function buildPixPayload({ key, name, city }: { key: string; name: string; city: string }): string {
+  const merchantAccountInfo = emvField('26', emvField('00', 'br.gov.bcb.pix') + emvField('01', key));
+  const additionalData = emvField('62', emvField('05', '***'));
+  const payload =
+    emvField('00', '01') + // Payload Format Indicator
+    merchantAccountInfo +
+    emvField('52', '0000') + // Merchant Category Code
+    emvField('53', '986') + // Moeda: BRL
+    emvField('58', 'BR') + // País
+    emvField('59', name) + // Nome do recebedor (máx. 25)
+    emvField('60', city) + // Cidade do recebedor (máx. 15)
+    additionalData +
+    '6304'; // CRC16 (id + tamanho fixos), valor calculado a seguir
+  return payload + crc16(payload);
+}
+
+const PIX_PAYLOAD = buildPixPayload({
+  key: PIX_KEY,
+  name: 'AQUATRANS',
+  city: 'RIO DE JANEIRO',
+});
+
 export function ApadrinhamentoPage() {
   const [copiedPix, setCopiedPix] = useState(false);
 
@@ -86,7 +128,7 @@ export function ApadrinhamentoPage() {
   ];
 
   const copyPixKey = () => {
-    navigator.clipboard.writeText("aquatrans@email.com.br");
+    navigator.clipboard.writeText("aqua.trans24@gmail.com");
     setCopiedPix(true);
     setTimeout(() => setCopiedPix(false), 2000);
   };
@@ -189,7 +231,10 @@ export function ApadrinhamentoPage() {
                     ))}
                   </div>
                   
-                  <button className={`w-full px-4 py-3 rounded-lg bg-gradient-to-r ${nivel.color} text-white font-medium hover:opacity-90 transition-opacity`}>
+                  <button
+                    onClick={() => document.getElementById('doar-pix')?.scrollIntoView({ behavior: 'smooth' })}
+                    className={`w-full px-4 py-3 rounded-lg bg-gradient-to-r ${nivel.color} text-white font-medium hover:opacity-90 transition-opacity`}
+                  >
                     Selecionar
                   </button>
                 </motion.div>
@@ -199,7 +244,7 @@ export function ApadrinhamentoPage() {
         </section>
 
         {/* PIX Section */}
-        <section className="py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+        <section id="doar-pix" className="scroll-mt-24 py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-8"
@@ -223,7 +268,7 @@ export function ApadrinhamentoPage() {
             >
               <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">E-mail</div>
               <div className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                aquatrans@email.com.br
+                aqua.trans24@gmail.com
               </div>
               <button
                 onClick={copyPixKey}
@@ -238,7 +283,7 @@ export function ApadrinhamentoPage() {
                 <ol className="text-left space-y-2 text-sm text-gray-600 dark:text-gray-400">
                   <li>1. Abra o app do seu banco</li>
                   <li>2. Escolha pagar via PIX</li>
-                  <li>3. Cole a chave copiada ou digite: <strong>aquatrans@email.com.br</strong></li>
+                  <li>3. Cole a chave copiada ou digite: <strong>aqua.trans24@gmail.com</strong></li>
                   <li>4. Digite o valor da doação</li>
                   <li>5. Confirme o pagamento</li>
                 </ol>
@@ -248,7 +293,7 @@ export function ApadrinhamentoPage() {
                 <div className="text-sm font-semibold text-gray-900 dark:text-white mb-3">QR Code PIX</div>
                 <div className="bg-white p-4 rounded-lg inline-block">
                   <QRCodeSVG
-                    value="aquatrans@email.com.br"
+                    value={PIX_PAYLOAD}
                     size={200}
                     level="H"
                     includeMargin={true}
