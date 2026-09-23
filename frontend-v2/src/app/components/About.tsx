@@ -97,7 +97,7 @@ export function About() {
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="group relative bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 p-8 rounded-2xl border-2 border-slate-200 dark:border-slate-700 hover:border-transparent hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                className="group relative bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 p-5 sm:p-8 rounded-2xl border-2 border-slate-200 dark:border-slate-700 hover:border-transparent hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -115,10 +115,10 @@ export function About() {
                   >
                     {stat.icon}
                   </motion.div>
-                  <div className="text-4xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-2 tracking-tight break-words hyphens-auto">
                     {stat.number}
                   </div>
-                  <div className="text-base font-bold text-slate-900 dark:text-white mb-2">
+                  <div className="text-sm sm:text-base font-bold text-slate-900 dark:text-white mb-2 break-words">
                     {stat.label}
                   </div>
                   <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
